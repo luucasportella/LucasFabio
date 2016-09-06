@@ -16,16 +16,25 @@ import java.util.logging.Logger;
  * @author Lucas
  */
 public class Teste {
+
    
     public static void main(String[] args) {
+                
+        TicketMachine tm = new TicketMachine(20); //valor do produto
         
-        TicketMachine tm = new TicketMachine(10);
         try {
-            tm.inserir(5);
-            tm.inserir(5);
-            tm.getSaldo();
+            //Modo implementado: apenas um ticket pode ser comprado.
             
-            System.out.println(tm.imprimir());
+            tm.inserir(50); //insere 5 reais na maquina
+            //tm.inserir(20);
+            //tm.inserir(10);
+            System.out.println("Saldo: " + tm.getSaldo()); //saldo
+            System.out.println("");
+            System.out.println("Ticket comprado!!!");
+            System.out.println(tm.imprimir()); //printa o ticket comprado
+            System.out.println("Troco: " + tm.getSaldo()); //saldo atual, após a compra
+            System.out.println("");
+            
         } catch (PapelMoedaInvalidaException ex) {
             Logger.getLogger(Teste.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SaldoInsuficienteException ex) {
